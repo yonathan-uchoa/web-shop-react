@@ -2,8 +2,12 @@ import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import "./styles.scss";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../context/ShoppingCart/context";
+import { Product } from "../../context/ShoppingCart/data";
 
 export const Navbar = () => {
+  const cartState = useContext(ShoppingCartContext)?.cartState;
   return (
     <NavbarBs className="bg-white shadow-sm mb-3">
       <Container>
@@ -24,7 +28,13 @@ export const Navbar = () => {
         >
           <IoMdCart size={24} />
           <div className="rounded-circle bg-danger d-flex justify-content-center align-items-center cart-counter ">
-            9
+            {cartState
+              ? cartState.products.reduce(
+                  (accumulator: number, value: Product) =>
+                    accumulator + value.quantity,
+                  0
+                )
+              : 0}
           </div>
         </Button>
       </Container>
