@@ -1,0 +1,11 @@
+.item-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: scale(1.008);
+  transition: 200ms;
+}
+
+.item-title:hover {
+  color: tomato;
+  transition: 100ms;
+  cursor: pointer;
+}
