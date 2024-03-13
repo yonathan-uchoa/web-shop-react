@@ -1,9 +1,15 @@
 import React, { createContext } from "react";
 import { Cart, Product } from "./data.ts";
 
-type ContextType = {
+export type CartDispatch = React.Dispatch<{
+  type: string;
+  item?: Product;
+  isOpen?: boolean;
+}>;
+
+export type CartContextType = {
   cartState: Cart;
-  cartDispatch: React.Dispatch<{ type: string; item: Product }>;
+  cartDispatch: CartDispatch;
 };
 
-export const ShoppingCartContext = createContext<ContextType | null>(null);
+export const ShoppingCartContext = createContext<CartContextType | null>(null);

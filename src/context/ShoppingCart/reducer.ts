@@ -3,34 +3,33 @@ import { Cart, Product } from "./data.ts";
 
 export const reducer = (
   state: Cart,
-  action: { type: string; item: Product }
+  action: { type: string; item?: Product; isOpen?: boolean }
 ) => {
   switch (action.type) {
-    case types.INCREASE_CART_QUANTITY: {
-      if (state.products.find((el) => el.id === action.item.id) == null) {
-        state.products.push({ ...action.item, quantity: 1 });
-
-        return { ...state };
-      } else {
-        const index = state.products.findIndex(
-          (el) => el.id === action.item.id
-        );
-        state.products[index].quantity += 1;
-        console.log("falso");
-        return { ...state };
-      }
+    case types.ADD_ITEM_CART: {
+      const item = action.item as Product;
+      state.products.push({ ...item, quantity: 1 });
+      return { ...state };
     }
-    // case types.DECREASE_CART_QUANTITY: {
-    //   if (state.products.find((el) => el.id === action.item.id) == null) {
-    //     state.products.push({ ...action.item, quantity: 1 });
-    //     return { ...state };
-    //   } else {
-    //     state.products[
-    //       state.products.findIndex((el) => el.id === action.item.id)
-    //     ].quantity -= 1;
-    //     return { ...state };
-    //   }
-    // }
+    case types.REMOVE_ITEM_CART: {
+      state.products = state.products.filter((el) => el.id != action.item?.id);
+      return { ...state };
+    }
+    case types.ITEM_QUANTITY: {
+      const index = state.products.findIndex((el) => el.id === action.item?.id);
+      if (action.item) state.products[index].quantity = action.item.quantity;
+      return { ...state };
+    }
+    case types.CLOSE_CART: {
+      return { ...state, isOpen: false };
+    }
+    case types.OPEN_CART: {
+      return { ...state, isOpen: true };
+    }
+    case types.PROCESS_CHECKOUT: {
+      console.log("checkout!");
+      return { ...state };
+    }
   }
   return { ...state };
 };

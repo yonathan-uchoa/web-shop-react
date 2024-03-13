@@ -15,14 +15,24 @@ export type Product = {
 export type Cart = {
   id: string;
   products: Product[];
+  isOpen: boolean;
 };
 
-const fakeData: Cart = {
+export type CartResponse = {
+  message: string;
+  data: Cart;
+};
+
+export const emptyCart: Cart = {
   id: "mycart",
   products: [],
+  isOpen: false,
 };
 
 export const data: Cart = await fetch("http://localhost:4000/cart")
   .then((res) => res.json())
-  .then((res) => res.data)
-  .catch(() => fakeData);
+  .then((res) => {
+    res.data.isOpen = false;
+    return res.data;
+  })
+  .catch(() => emptyCart);
