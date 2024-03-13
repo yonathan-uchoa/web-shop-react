@@ -3,7 +3,7 @@ import App from "./App";
 
 import Home from "./pages/home";
 import Store from "./pages/store";
-import About from "./pages/about";
+import Order from "./pages/order";
 
 export const routes = createBrowserRouter([
   {
@@ -19,8 +19,8 @@ export const routes = createBrowserRouter([
         element: <Store />,
       },
       {
-        path: "/about",
-        element: <About />,
+        path: "/order",
+        element: <Order />,
       },
     ],
   },

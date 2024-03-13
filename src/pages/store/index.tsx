@@ -1,14 +1,14 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { StoreItem, StoreItemsProps } from "../../components/StoreItem";
+import { StoreItem } from "../../components/StoreItem";
 import { Sidebar } from "../../components/Sidebar";
+import { Product } from "../../context/ShoppingCart/data";
 
-const data: StoreItemsProps[] = await fetch("http://localhost:4000/products")
+const data: Product[] = await fetch("http://localhost:4000/products")
   .then((data) => {
     return data.json();
   })
   .catch(() => []);
 
-console.log(data);
 export const Store = () => {
   return (
     <>
