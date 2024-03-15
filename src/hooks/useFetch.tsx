@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 
 const isObjectEqual = (objA: string, objB: string) => {
@@ -6,8 +7,8 @@ const isObjectEqual = (objA: string, objB: string) => {
 
 export const useFetch = (url: string, options: any) => {
   const [result, setResult] = useState<any>(null);
-  const [loading, setLoading] = useState<any>(false);
-  const [shouldLoad, setShouldLoad] = useState<any>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [shouldLoad, setShouldLoad] = useState<boolean>(false);
   const urlRef = useRef(url);
   const optionsRef = useRef(options);
 
@@ -53,7 +54,7 @@ export const useFetch = (url: string, options: any) => {
           setLoading(false);
           setResult(false);
         }
-        console.log("MY ERROR:", e.message);
+        if (e instanceof Error) console.log("MY ERROR:", e.message);
       }
     };
 
