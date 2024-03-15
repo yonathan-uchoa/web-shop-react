@@ -1,13 +1,8 @@
-import { useContext } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Product } from "../../context/ShoppingCart/data";
 import React from "react";
-import {
-  CartContextType,
-  ShoppingCartContext,
-} from "../../context/ShoppingCart/context";
 import "./styles.scss";
-import { addItemCart } from "../../context/ShoppingCart/actions";
+import { CartButton } from "../CartButton";
 
 type Props = {
   item: Product;
@@ -16,8 +11,6 @@ type Props = {
 };
 
 export const ItemFrame = ({ item, setShow, show }: Props) => {
-  const cartContext = useContext(ShoppingCartContext) as CartContextType;
-  const { cartDispatch } = cartContext;
   const handleClose = () => setShow(false);
   return (
     <Modal show={show} onHide={handleClose}>
@@ -29,14 +22,7 @@ export const ItemFrame = ({ item, setShow, show }: Props) => {
         <p className="text-justify m-3">{item.description}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          onClick={() => {
-            addItemCart(cartDispatch, item);
-          }}
-          className="w-100"
-        >
-          +Add To Cart
-        </Button>
+        <CartButton item={item} />
       </Modal.Footer>
     </Modal>
   );

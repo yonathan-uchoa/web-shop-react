@@ -1,23 +1,12 @@
-import { Button, Card } from "react-bootstrap";
-import { useContext, useState } from "react";
-import {
-  CartContextType,
-  ShoppingCartContext,
-} from "../../context/ShoppingCart/context";
-import {
-  addItemCart,
-  removeItemCart,
-} from "../../context/ShoppingCart/actions.ts";
+import { Card } from "react-bootstrap";
+import { useState } from "react";
+import { CartButton } from "../CartButton";
 
 import "./styles.scss";
 import { ItemFrame } from "../ItemFrame/index.tsx";
 import { Product } from "../../context/ShoppingCart/data.ts";
 
 export const StoreItem = (item: Product) => {
-  const cartContext = useContext(ShoppingCartContext) as CartContextType;
-  const { cartState, cartDispatch } = cartContext;
-  const itemOnCart = cartState.products.find((el) => el.id === item.id);
-
   const [show, setShow] = useState(false);
 
   return (
@@ -40,24 +29,7 @@ export const StoreItem = (item: Product) => {
             <span className="ms-2 text-muted">${item.price}</span>
           </Card.Title>
           <div className="mt-auto">
-            {itemOnCart ? (
-              <Button
-                variant="danger"
-                onClick={() => removeItemCart(cartDispatch, item)}
-                className="w-100"
-              >
-                Remove from Cart
-              </Button>
-            ) : (
-              <Button
-                onClick={() => {
-                  addItemCart(cartDispatch, item);
-                }}
-                className="w-100"
-              >
-                +Add To Cart
-              </Button>
-            )}
+            <CartButton item={item} />
           </div>
         </Card.Body>
       </Card>
