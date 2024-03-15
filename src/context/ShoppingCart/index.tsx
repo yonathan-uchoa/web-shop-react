@@ -1,10 +1,10 @@
 import { ReactNode, useReducer } from "react";
 import { ShoppingCartContext } from "./context";
 import { reducer } from "./reducer";
-import { data } from "./data";
+import { emptyCart } from "./data";
 
 export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartState, cartDispatch] = useReducer(reducer, data);
+  const [cartState, cartDispatch] = useReducer(reducer, emptyCart);
 
   return (
     <ShoppingCartContext.Provider value={{ cartState, cartDispatch }}>

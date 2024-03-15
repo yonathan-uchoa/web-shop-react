@@ -41,12 +41,12 @@ export const emptyCart: Cart = {
   isOpen: false,
 };
 
-export const data: Cart = await fetch(
-  "https://webshop-backend.adaptable.app/cart"
-)
-  .then((res) => res.json())
-  .then((res) => {
-    res.data.isOpen = false;
-    return res.data;
-  })
-  .catch(() => emptyCart);
+export const data = async () => {
+  return await fetch("https://webshop-backend.adaptable.app/cart")
+    .then((res) => res.json())
+    .then((res) => {
+      res.data.isOpen = false;
+      return res.data as Cart;
+    })
+    .catch(() => emptyCart);
+};
