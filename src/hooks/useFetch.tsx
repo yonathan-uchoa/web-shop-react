@@ -37,8 +37,6 @@ export const useFetch = (url: string, options: any) => {
     setLoading(true);
 
     const fetchData = async () => {
-      await new Promise((r) => setTimeout(r, 1000));
-
       try {
         const response = await fetch(urlRef.current, {
           signal,
@@ -53,6 +51,7 @@ export const useFetch = (url: string, options: any) => {
       } catch (e) {
         if (!wait) {
           setLoading(false);
+          setResult(false);
         }
         console.log("MY ERROR:", e.message);
       }
