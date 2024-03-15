@@ -25,7 +25,7 @@ export const Store = () => {
             </Col>
             <Col sm={9}>
               <Row md={2} xs={1} lg={3} className="g-3">
-                {products.map((item) => {
+                {products.map((item: Product) => {
                   return (
                     <Col key={item.id}>
                       <StoreItem {...item} />

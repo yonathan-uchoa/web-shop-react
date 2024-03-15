@@ -1,4 +1,4 @@
-import { Card, ListGroup, Stack } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 import { Order } from "../../context/ShoppingCart/data";
 import { formatCurrency } from "../../utilities/format-currency";
 import { OrderItem } from "../OrderItem";

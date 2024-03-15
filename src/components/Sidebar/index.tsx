@@ -1,6 +1,5 @@
 import { Form, Stack } from "react-bootstrap";
 import "./styles.scss";
-import { useFetch } from "../../hooks/useFetch";
 
 export const Sidebar = ({ categories }: { categories: string[] }) => {
   console.warn(categories);
