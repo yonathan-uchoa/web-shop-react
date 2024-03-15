@@ -3,13 +3,14 @@ import { Product } from "./data.ts";
 import * as types from "./types.ts";
 
 export const addItemCart = async (dispatch: CartDispatch, item: Product) => {
-  await fetch(`http://localhost:4000/cart`, {
+  const res = await fetch(`https://webshop-backend.adaptable.app/cart`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
     body: JSON.stringify({ products: [{ ...item, quantity: 1 }] }),
   });
+  console.log(res.json());
   dispatch({
     type: types.ADD_ITEM_CART,
     item: item,
@@ -17,13 +18,17 @@ export const addItemCart = async (dispatch: CartDispatch, item: Product) => {
 };
 
 export const itemQuantity = async (dispatch: CartDispatch, item: Product) => {
-  await fetch(`http://localhost:4000/cart/${item.id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({ quantity: item.quantity }),
-  });
+  const res = await fetch(
+    `https://webshop-backend.adaptable.app/cart/${item.id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ quantity: item.quantity }),
+    }
+  );
+  console.log(res.json());
 
   dispatch({
     type: types.ITEM_QUANTITY,
@@ -32,7 +37,7 @@ export const itemQuantity = async (dispatch: CartDispatch, item: Product) => {
 };
 
 export const removeItemCart = async (dispatch: CartDispatch, item: Product) => {
-  await fetch(`http://localhost:4000/cart/${item.id}`, {
+  await fetch(`https://webshop-backend.adaptable.app/cart/${item.id}`, {
     method: "DELETE",
   });
   dispatch({
@@ -54,7 +59,7 @@ export const openCart = (dispatch: CartDispatch) => {
 };
 
 export const processCheckout = async (dispatch: CartDispatch) => {
-  await fetch(`http://localhost:4000/order`, {
+  await fetch(`https://webshop-backend.adaptable.app/order`, {
     method: "POST",
   });
   dispatch({ type: types.PROCESS_CHECKOUT });
