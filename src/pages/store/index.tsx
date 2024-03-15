@@ -3,6 +3,7 @@ import { StoreItem } from "../../components/StoreItem";
 import { Sidebar } from "../../components/Sidebar";
 import { useFetch } from "../../hooks/useFetch";
 import "./styles.css";
+import { Product } from "../../context/ShoppingCart/data";
 
 export const Store = () => {
   const [products, productsLoading] = useFetch(
