@@ -1,17 +1,16 @@
-import { Container, Form } from "react-bootstrap";
+import { Form, Stack } from "react-bootstrap";
 import "./styles.scss";
+import { useFetch } from "../../hooks/useFetch";
 
-export const Sidebar = () => {
+export const Sidebar = ({ categories }: { categories: string[] }) => {
+  console.warn(categories);
   return (
-    <Container fluid>
-      <Form>
-        <div key="default-checkbox" className="mb-3">
-          <Form.Check type="checkbox" id="1" label="type 1" />
-          <Form.Check type="checkbox" id="2" label="type 2" />
-          <Form.Check type="checkbox" id="3" label="type 3" />
-          <Form.Check type="checkbox" id="4" label="type 4" />
-        </div>
+    <Stack direction="horizontal" gap={2} className="d-flex">
+      <Form className="sidebar-form w-100">
+        {categories.map((category, index) => (
+          <Form.Check type="checkbox" key={index} label={category} />
+        ))}
       </Form>
-    </Container>
+    </Stack>
   );
 };
