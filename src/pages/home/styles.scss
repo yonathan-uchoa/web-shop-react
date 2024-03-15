@@ -1,0 +1,15 @@
+.home-container {
+  height: calc(100vh - 6.5rem);
+}
+
+.home-container > h1 {
+  text-align: center;
+}
+
+.home-container > p {
+  margin: 16px;
+}
+
+.home-container p {
+  text-indent: 1rem;
+}
