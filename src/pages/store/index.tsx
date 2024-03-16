@@ -4,6 +4,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { useFetch } from "../../hooks/useFetch";
 import "./styles.css";
 import { Product } from "../../context/ShoppingCart/data";
+import { useState } from "react";
 
 export const Store = () => {
   const [products, productsLoading] = useFetch(
@@ -14,19 +15,35 @@ export const Store = () => {
     "https://webshop-backend.adaptable.app/products/categories",
     {}
   );
+  const [categoryFilter, setCategoryFilter] = useState<Set<string>>(
+    new Set<string>()
+  );
+  let filterProd: Product[] = [];
 
-  if (productsLoading || categoriesLoading) return <p>Loading...</p>;
+  if (productsLoading || categoriesLoading) {
+    return <p>Loading...</p>;
+  } else {
+    categoryFilter.size === 0
+      ? (filterProd = products)
+      : (filterProd = products.filter((p: Product) =>
+          categoryFilter.has(p.category)
+        ));
+  }
+
   return (
     <>
       {products && categories ? (
         <Container fluid>
           <Row>
             <Col sm={3} className="text-break side-bar bg-white">
-              <Sidebar categories={categories} />
+              <Sidebar
+                categories={categories}
+                setCategory={setCategoryFilter}
+              />
             </Col>
             <Col sm={9}>
               <Row md={2} xs={1} lg={3} className="g-3">
-                {products.map((item: Product) => {
+                {filterProd.map((item: Product) => {
                   return (
                     <Col key={item.id}>
                       <StoreItem {...item} />
