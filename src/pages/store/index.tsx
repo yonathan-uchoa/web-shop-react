@@ -5,6 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import "./styles.css";
 import { Product } from "../../context/ShoppingCart/data";
 import { useState } from "react";
+import { SearchBar } from "../../components/SearchBar";
 
 export const Store = () => {
   const [products, productsLoading] = useFetch(
@@ -42,6 +43,9 @@ export const Store = () => {
               />
             </Col>
             <Col sm={9}>
+              <Row className="g-3 w-100">
+                <SearchBar />
+              </Row>
               <Row md={2} xs={1} lg={3} className="g-3">
                 {filterProd.map((item: Product) => {
                   return (
