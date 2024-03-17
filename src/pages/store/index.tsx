@@ -19,16 +19,25 @@ export const Store = () => {
   const [categoryFilter, setCategoryFilter] = useState<Set<string>>(
     new Set<string>()
   );
+  const [titleFilter, setTitleFilter] = useState<string>("");
+
+  const isOnTitle = (product: Product, filter: string) =>
+    product.title.toLowerCase().includes(filter.toLowerCase());
+
   let filterProd: Product[] = [];
 
   if (productsLoading || categoriesLoading) {
     return <p>Loading...</p>;
   } else {
     categoryFilter.size === 0
-      ? (filterProd = products)
-      : (filterProd = products.filter((p: Product) =>
-          categoryFilter.has(p.category)
-        ));
+      ? (filterProd = products?.filter((p: Product) =>
+          isOnTitle(p, titleFilter)
+        ))
+      : (filterProd = products?.filter((p: Product) => {
+          if (categoryFilter.has(p.category)) {
+            return isOnTitle(p, titleFilter);
+          }
+        }));
   }
 
   return (
@@ -43,8 +52,8 @@ export const Store = () => {
               />
             </Col>
             <Col sm={9}>
-              <Row className="g-3 w-100">
-                <SearchBar />
+              <Row>
+                <SearchBar setTitleFilter={setTitleFilter} />
               </Row>
               <Row md={2} xs={1} lg={3} className="g-3">
                 {filterProd.map((item: Product) => {

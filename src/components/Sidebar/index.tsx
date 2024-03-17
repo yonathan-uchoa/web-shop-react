@@ -20,17 +20,16 @@ export const Sidebar = ({ categories, setCategory }: Props) => {
   };
 
   return (
-    <Stack direction="horizontal" gap={2} className="d-flex">
-      <Form className="sidebar-form w-100">
-        {categories.map((category, index) => (
-          <Form.Check
-            key={index}
-            onChange={(e) => addFilter(e.target.checked, category)}
-            type="checkbox"
-            label={category}
-          ></Form.Check>
-        ))}
-      </Form>
+    <Stack direction="vertical" gap={2} className="d-flex pt-3">
+      {categories.map((category, index) => (
+        <Form.Check
+          type="checkbox"
+          label={category}
+          id={`form-${index}`}
+          onChange={(e) => addFilter(e.target.checked, category)}
+          className="sidebar-form"
+        />
+      ))}
     </Stack>
   );
 };

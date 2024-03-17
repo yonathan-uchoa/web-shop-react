@@ -1,0 +1,6 @@
+.item-frame:hover {
+  cursor: pointer;
+  > .item-frame-title {
+    color: tomato;
+  }
+}
