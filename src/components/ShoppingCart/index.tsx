@@ -37,10 +37,10 @@ export const ShoppingCart = () => {
           <Button
             className="mt-4"
             onClick={() => {
-              alert("checkout success!");
-              processCheckout(cartDispatch).then(() =>
-                window.location.reload()
-              );
+              processCheckout(cartDispatch).then(() => {
+                alert("checkout success! The page will reload to /home");
+                window.location.href = window.location.origin;
+              });
             }}
           >
             Proceed to checkout
