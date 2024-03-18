@@ -1,6 +1,6 @@
 import { Button, Offcanvas, Stack } from "react-bootstrap";
 import "./styles.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   CartContextType,
   ShoppingCartContext,
@@ -16,6 +16,7 @@ export const ShoppingCart = () => {
     (accumulator, value) => accumulator + value.price * value.quantity,
     0
   );
+  const [processing, setProcessing] = useState<boolean>(false);
 
   return (
     <Offcanvas
@@ -36,14 +37,16 @@ export const ShoppingCart = () => {
           </div>
           <Button
             className="mt-4"
+            variant={processing ? "warning" : "primary"}
             onClick={() => {
+              setProcessing(true);
               processCheckout(cartDispatch).then(() => {
-                alert("checkout success! The page will reload to /home");
-                window.location.href = window.location.origin;
+                alert("checkout success! The page will be reloaded");
+                window.location.reload();
               });
             }}
           >
-            Proceed to checkout
+            {processing ? "Processing..." : "Proceed to checkout"}
           </Button>
         </Stack>
       </Offcanvas.Body>

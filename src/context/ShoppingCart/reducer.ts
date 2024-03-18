@@ -27,7 +27,6 @@ export const reducer = (
       return { ...state, isOpen: true };
     }
     case types.PROCESS_CHECKOUT: {
-      console.log("checkout!");
       return { ...state };
     }
   }
