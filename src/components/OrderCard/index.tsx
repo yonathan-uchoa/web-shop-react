@@ -28,7 +28,6 @@ export const OrderCard = (order: Order) => {
               key={item.id}
               className="rounded-0 list-item"
               onClick={() => {
-                console.log(item);
                 currentItem.current = item;
               }}
             >
