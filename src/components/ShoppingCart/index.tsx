@@ -38,6 +38,7 @@ export const ShoppingCart = () => {
           <Button
             className="mt-4"
             variant={processing ? "warning" : "primary"}
+            disabled={processing}
             onClick={() => {
               setProcessing(true);
               processCheckout(cartDispatch).then(() => {
