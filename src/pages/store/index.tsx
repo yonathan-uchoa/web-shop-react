@@ -13,7 +13,7 @@ export const Store = () => {
     {}
   );
   const [categories, categoriesLoading] = useFetch(
-    "https://webshop-backend.adaptable.app/products/categories",
+    "https://webshop-backend.adaptable.app/products/categories/all",
     {}
   );
   const [categoryFilter, setCategoryFilter] = useState<Set<string>>(
