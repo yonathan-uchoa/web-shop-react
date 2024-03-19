@@ -25,7 +25,7 @@ export const Sidebar = ({ categories, setCategory }: Props) => {
         <Form.Check
           type="checkbox"
           label={category}
-          id={`form-${index}`}
+          key={`form-${index}`}
           onChange={(e) => addFilter(e.target.checked, category)}
           className="sidebar-form"
         />

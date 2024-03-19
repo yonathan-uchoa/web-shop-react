@@ -30,7 +30,7 @@ export const ShoppingCart = () => {
       <Offcanvas.Body>
         <Stack gap={4}>
           {cartState.products?.map((item) => {
-            return <CartItem key={item.id} item={item} />;
+            return <CartItem key={`cart-stack-${item.id}`} item={item} />;
           })}
           <div className="ms-auto fw-bold fs-5">
             Total {formatCurrency(totalCart)}

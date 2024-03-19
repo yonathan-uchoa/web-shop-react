@@ -25,7 +25,7 @@ export const OrderCard = (order: Order) => {
         {order.cart.products.map((item) => {
           return (
             <ListGroup.Item
-              key={item.id}
+              key={`order-item-${item.id}`}
               className="rounded-0 list-item"
               onClick={() => {
                 currentItem.current = item;

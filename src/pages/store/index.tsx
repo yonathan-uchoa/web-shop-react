@@ -58,7 +58,7 @@ export const Store = () => {
               <Row md={2} xs={1} lg={3} className="g-3">
                 {filterProd.map((item: Product) => {
                   return (
-                    <Col key={item.id}>
+                    <Col key={`col-${item.id}`}>
                       <StoreItem {...item} />
                     </Col>
                   );
