@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Web-shop | React Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![GitHub repo size](https://img.shields.io/github/repo-size/yonathan-uchoa/web-shop-react?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/yonathan-uchoa/web-shop-react?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/yonathan-uchoa/web-shop-react?style=for-the-badge)
 
-Currently, two official plugins are available:
+![/store page](https://github.com/yonathan-uchoa/web-shop-react/assets/44504264/2f251501-0ec4-4e2a-80af-f2cf00d187d7)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Front-end project to my other project [web-shop](https://github.com/yonathan-uchoa/web-shop/)
 
-## Expanding the ESLint configuration
+### About the project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+You can test this project in this [Vercel server](https://web-shop-react-beryl.vercel.app/).
 
-- Configure the top-level `parserOptions` property like this:
+It's a simple webpage, created with **vite template**, to connect with my back-end server [web-shop](https://github.com/yonathan-uchoa/web-shop/). In this project you can add items to the cart, remove then and send a simple checkout - without payments methods -, you can't add or update a product (this can be do in the back-end only).
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+As you can see, I'm training my React and TS with this project and his objective is to show **a simple full-stack project** with the back-end.
+
+<details>
+<summary>Here you can see my Actual Coverage</summary>
+
+![actual coverage statistics](https://github.com/yonathan-uchoa/web-shop/assets/44504264/4450943f-1e49-473c-9645-87f97426c1a2)
+
+</details>
+
+## 🔧 Technologies
+
+- React.js
+- Vite 
+- TypeScript
+- react-bootstrap
+
+## 🚀 Installing
+
+Just run:
+
+```
+npm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## ☕ Runs
+
+For run the project in development:
+
+```
+npm run dev
+```
+
+For build the project, note if have Typescript errors the project **won't build**:
+
+```
+npm run start
+```
